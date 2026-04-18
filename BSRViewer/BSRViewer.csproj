@@ -1,0 +1,135 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Beat Saber 1.40.8 runs on Unity 2021.3.16f1 which targets .NET Framework 4.7.2 -->
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>BSRViewer</AssemblyName>
+    <RootNamespace>BSRViewer</RootNamespace>
+    <Nullable>enable</Nullable>
+    <LangVersion>9</LangVersion>
+    <Optimize>true</Optimize>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- ── BSIPA manifest embed ───────────────────────────────────────────── -->
+  <ItemGroup>
+    <EmbeddedResource Include="manifest.json"/>
+    <EmbeddedResource Include="UI\BSRViewerView.bsml"/>
+  </ItemGroup>
+
+  <!-- ── Reference paths ────────────────────────────────────────────────── -->
+  <!--
+    Set BeatSaberDir in BSRViewer.csproj.user (not tracked by git):
+
+      <?xml version="1.0" encoding="utf-8"?>
+      <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+        <PropertyGroup>
+          <BeatSaberDir>C:\Program Files (x86)\Steam\steamapps\common\Beat Saber</BeatSaberDir>
+        </PropertyGroup>
+      </Project>
+  -->
+
+
+  <PropertyGroup Condition="'$(BeatSaberDir)' == ''">
+    <!-- Fallback — will fail to build if not set, but gives a clear error -->
+    <BeatSaberDir>PLEASE_SET_BeatSaberDir_IN_csproj.user</BeatSaberDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- BSIPA loader (in Beat Saber_Data\Managed\) -->
+    <Reference Include="IPA.Loader">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\IPA.Loader.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- Unity Engine -->
+    <Reference Include="UnityEngine">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- TextMeshPro -->
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- HMUI (Beat Saber's custom UI framework) -->
+    <Reference Include="HMUI">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\HMUI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- Beat Saber main assembly -->
+    <Reference Include="Main">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Main.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- DataModels — contains BeatmapLevel -->
+    <Reference Include="DataModels">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\DataModels.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- Zenject (used by Beat Saber for DI) -->
+    <Reference Include="Zenject">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Zenject.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Zenject-usage">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Zenject-usage.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- BSML — BeatSaberMarkupLanguage (DLL is named BSML.dll in 1.40.8) -->
+    <Reference Include="BSML">
+      <HintPath>$(BeatSaberDir)\Plugins\BSML.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- BeatSaber.ViewSystem (required by BSML / ViewController base classes) -->
+    <Reference Include="BeatSaber.ViewSystem">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\BeatSaber.ViewSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- SiraUtil (Zenjector helpers) -->
+    <Reference Include="SiraUtil">
+      <HintPath>$(BeatSaberDir)\Plugins\SiraUtil.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- Newtonsoft.Json (ships with Beat Saber) -->
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- System.Net.Http (part of .NET Framework 4.7.2) -->
+    <Reference Include="System.Net.Http"/>
+  </ItemGroup>
+
+  <!-- ── Post-build: copy DLL into Plugins folder ────────────────────────── -->
+  <Target Name="CopyToBeatSaber" AfterTargets="Build" Condition="Exists('$(BeatSaberDir)')">
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll"
+          DestinationFolder="$(BeatSaberDir)\Plugins"
+          SkipUnchangedFiles="false"/>
+    <Message Text="Copied $(AssemblyName).dll → $(BeatSaberDir)\Plugins" Importance="High"/>
+  </Target>
+
+</Project>

@@ -1,0 +1,9 @@
+C:\Users\Bullishdrake09\Documents\BSRViewer\BSRViewer\obj\Release\net472\BSRViewer.csproj.AssemblyReference.cache
+C:\Users\Bullishdrake09\Documents\BSRViewer\BSRViewer\obj\Release\net472\BSRViewer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bullishdrake09\Documents\BSRViewer\BSRViewer\obj\Release\net472\BSRViewer.AssemblyInfoInputs.cache
+C:\Users\Bullishdrake09\Documents\BSRViewer\BSRViewer\obj\Release\net472\BSRViewer.AssemblyInfo.cs
+C:\Users\Bullishdrake09\Documents\BSRViewer\BSRViewer\obj\Release\net472\BSRViewer.csproj.CoreCompileInputs.cache
+C:\Users\Bullishdrake09\Documents\BSRViewer\BSRViewer\bin\Release\net472\BSRViewer.dll
+C:\Users\Bullishdrake09\Documents\BSRViewer\BSRViewer\bin\Release\net472\BSRViewer.pdb
+C:\Users\Bullishdrake09\Documents\BSRViewer\BSRViewer\obj\Release\net472\BSRViewer.dll
+C:\Users\Bullishdrake09\Documents\BSRViewer\BSRViewer\obj\Release\net472\BSRViewer.pdb

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
+  "id": "BSRViewer",
+  "name": "BSR Viewer",
+  "author": "YourName",
+  "version": "1.0.0",
+  "gameVersion": "1.40.8",
+  "description": "Shows the BeatSaver BSR key and map info for the currently selected custom level, with one-click copy to clipboard.",
+  "dependsOn": {
+    "BSIPA": "^4.3.0",
+    "BeatSaberMarkupLanguage": "^1.12.0",
+    "SiraUtil": "^3.1.0"
+  },
+  "features": {},
+  "links": {
+    "project-source": "https://github.com/yourname/BSRViewer",
+    "project-home": "https://github.com/yourname/BSRViewer"
+  }
+}
