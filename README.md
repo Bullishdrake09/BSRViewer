@@ -1,6 +1,6 @@
 # BSR Viewer — Beat Saber 1.40.8 Mod
 
-A BSIPA plugin for **Beat Saber 1.40.8** that shows the **BeatSaver BSR key** and map metadata for any custom level you select in the song browser — right inside the game.
+A BSIPA plugin for **Beat Saber 1.40.8** that shows the **BeatSaver BSR key** and map metadata for any custom level you select in the song browser, right inside the game.
 
 ---
 
