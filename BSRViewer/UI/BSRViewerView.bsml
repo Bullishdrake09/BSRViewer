@@ -1,125 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  BSRViewer — in-game panel
-  Shows when the user selects a song. Displays the BSR key and map metadata
-  pulled live from BeatSaver's API.
--->
 <bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xsi:noNamespaceSchemaLocation='https://monkeymanboy.github.io/BSML-Docs/BSMLSchema.xsd'>
 
-  <!-- Outer card container -->
-  <vertical child-control-width='false'
-            child-align='UpperCenter'
-            spacing='2'
-            pad='4'
+  <!-- Main container -->
+  <vertical spacing='3'
+            pad='5'
             bg='round-rect-panel'
-            preferred-width='90'
-            preferred-height='50'>
+            preferred-width='95'
+            preferred-height='55'
+            child-align='UpperCenter'>
 
-    <!-- Title bar -->
-    <horizontal>
-      <text text='BeatSaver Info'
-            font-size='5'
+    <!-- HEADER -->
+    <vertical spacing='1' child-align='MiddleCenter'>
+      <text text='BEATSAVER'
+            font-size='3.5'
+            font-color='#888888'
+            letter-spacing='0.2'/>
+
+      <text text='Map Info'
+            font-size='6'
             font-color='#FFFFFF'
-            align='Center'
-            italics='true'/>
-    </horizontal>
+            align='Center'/>
+    </vertical>
 
     <!-- Divider -->
     <horizontal preferred-height='0.5' bg='panel-top'/>
 
-    <!-- Status / loading text (shown while fetching) -->
+    <!-- STATUS -->
     <text id='status-text'
-          text='Select a map to see its BSR key.'
+          text='Select a map to load details'
           font-size='3.5'
-          font-color='#BBBBBB'
+          font-color='#AAAAAA'
           align='Center'
           word-wrapping='true'/>
 
-    <!-- Map info grid (hidden until data loaded) -->
+    <!-- INFO PANEL -->
     <vertical id='info-panel'
               active='false'
-              spacing='1'
-              child-control-width='false'>
+              spacing='2'
+              pad-top='1'>
 
-      <!-- Song name -->
-      <horizontal spacing='2'>
-        <text text='Song:'
-              font-size='3.5'
-              font-color='#888888'
-              preferred-width='20'/>
+      <!-- SONG CARD -->
+      <vertical bg='round-rect-panel'
+                pad='3'
+                spacing='1'>
+
         <text id='song-name-text'
               text=''
-              font-size='3.5'
+              font-size='4.5'
               font-color='#FFFFFF'
-              overflow-mode='Ellipsis'
-              preferred-width='60'/>
-      </horizontal>
+              align='Center'
+              overflow-mode='Ellipsis'/>
 
-      <!-- Author -->
-      <horizontal spacing='2'>
-        <text text='Artist:'
-              font-size='3.5'
-              font-color='#888888'
-              preferred-width='20'/>
         <text id='song-author-text'
               text=''
               font-size='3.5'
-              font-color='#CCCCCC'
-              overflow-mode='Ellipsis'
-              preferred-width='60'/>
-      </horizontal>
+              font-color='#BBBBBB'
+              align='Center'
+              overflow-mode='Ellipsis'/>
 
-      <!-- Mapper -->
-      <horizontal spacing='2'>
-        <text text='Mapper:'
-              font-size='3.5'
-              font-color='#888888'
-              preferred-width='20'/>
         <text id='level-author-text'
               text=''
-              font-size='3.5'
-              font-color='#CCCCCC'
-              overflow-mode='Ellipsis'
-              preferred-width='60'/>
-      </horizontal>
+              font-size='3'
+              font-color='#888888'
+              align='Center'
+              overflow-mode='Ellipsis'/>
+      </vertical>
 
-      <!-- BSR key — the main highlight -->
-      <horizontal spacing='2' pad-top='3'>
-        <text text='BSR:'
-              font-size='4'
+      <!-- BSR HIGHLIGHT -->
+      <vertical bg='round-rect-panel'
+                pad='4'
+                spacing='2'
+                child-align='MiddleCenter'>
+
+        <text text='BSR KEY'
+              font-size='3.5'
               font-color='#FFD700'
-              preferred-width='20'/>
+              letter-spacing='0.2'/>
+
         <text id='bsr-key-text'
               text=''
-              font-size='5'
+              font-size='7'
               font-color='#FFD700'
-              align='Center'
-              preferred-width='40'/>
-        <!-- Copy to clipboard button -->
+              align='Center'/>
+
+        <!-- COPY BUTTON -->
         <button id='copy-bsr-btn'
-                text='Copy'
+                text='Copy to Clipboard'
                 font-size='3.5'
-                preferred-width='20'
+                preferred-width='60'
                 preferred-height='8'
-                on-click='CopyBsrKey'
-                interactable='true'/>
-      </horizontal>
+                on-click='CopyBsrKey'/>
+      </vertical>
 
-      <!-- Open in browser button -->
-      <horizontal pad-top='2'>
-        <button id='open-url-btn'
-                text='Open BeatSaver Page'
-                font-size='3.5'
-                preferred-width='80'
-                preferred-height='8'
-                on-click='OpenBeatSaverUrl'
-                interactable='true'/>
-      </horizontal>
-
+      <!-- ACTION BUTTON -->
+      <button id='open-url-btn'
+              text='Open on BeatSaver'
+              font-size='4'
+              preferred-width='80'
+              preferred-height='9'
+              on-click='OpenBeatSaverUrl'/>
     </vertical>
 
-    <!-- Error message (shown on 404 / network failure) -->
+    <!-- ERROR -->
     <text id='error-text'
           text=''
           font-size='3.5'
