@@ -4,7 +4,7 @@ A BSIPA plugin for **Beat Saber 1.40.8** that shows the **BeatSaver BSR key** an
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Details |
 |---------|---------|
@@ -17,7 +17,7 @@ A BSIPA plugin for **Beat Saber 1.40.8** that shows the **BeatSaver BSR key** an
 
 ---
 
-## 📋 Requirements
+## Requirements
 
 | Dependency | Version | Where to get |
 |------------|---------|--------------|
@@ -31,7 +31,7 @@ A BSIPA plugin for **Beat Saber 1.40.8** that shows the **BeatSaver BSR key** an
 
 ---
 
-## 🔨 Building
+## Building
 
 ### Prerequisites
 - Visual Studio 2022 **or** Rider (with .NET SDK 6+)
@@ -66,7 +66,7 @@ A BSIPA plugin for **Beat Saber 1.40.8** that shows the **BeatSaver BSR key** an
 
 ---
 
-## 📦 Manual Install (pre-built release)
+## Manual Install (pre-built release)
 
 1. Install the dependencies listed above via BSManager.
 2. Copy `BSRViewer.dll` into `<BeatSaberDir>\Plugins\`.
@@ -74,7 +74,7 @@ A BSIPA plugin for **Beat Saber 1.40.8** that shows the **BeatSaver BSR key** an
 
 ---
 
-## 🎮 Usage
+## Usage
 
 1. Open the **Solo** mode song browser.
 2. Click on any **custom level**.
@@ -86,7 +86,7 @@ A BSIPA plugin for **Beat Saber 1.40.8** that shows the **BeatSaver BSR key** an
 
 ---
 
-## 🗂 Project Structure
+## Project Structure
 
 ```
 BSRViewer/
@@ -107,7 +107,7 @@ BSRViewer/
 
 ---
 
-## 🔍 How it works
+##  How it works
 
 1. **Level selection event** — `LevelCollectionViewController.didSelectLevelEvent` fires when you click a song.
 2. **Hash extraction** — Custom level IDs are formatted `custom_level_<SHA1HASH>`. The hash is parsed out.
@@ -116,7 +116,7 @@ BSRViewer/
 
 ---
 
-## ⚠️ Notes
+## Notes
 
 - Requires an **internet connection** to resolve hashes.
 - The BeatSaver API has a rate limit of ~10 req/s; rapidly scrolling through songs may briefly show "loading" until the request completes.
@@ -125,6 +125,6 @@ BSRViewer/
 
 ---
 
-## 📜 License
+## License
 
 MIT — do whatever you like, attribution appreciated.
