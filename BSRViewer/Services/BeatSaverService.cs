@@ -23,7 +23,7 @@ namespace BSRViewer.Services
             _http = new HttpClient();
             _http.DefaultRequestHeaders.Add(
                 "User-Agent",
-                "BSRViewer/1.0.0 (+https://github.com/yourname/BSRViewer)"
+                "BSRViewer/1.0.0 (+https://github.com/Bullishdrake09/BSRViewer)"
             );
             _http.Timeout = TimeSpan.FromSeconds(10);
         }
