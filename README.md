@@ -42,7 +42,7 @@ A BSIPA plugin for **Beat Saber 1.40.8** that shows the **BeatSaver BSR key** an
 
 1. **Clone the repo**
    ```
-   git clone https://github.com/yourname/BSRViewer.git
+   git clone https://github.com/Bullishdrake09/BSRViewer.git
    cd BSRViewer
    ```
 
